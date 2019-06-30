@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess", "..\..\Users\Fly\source\repos\Chess\Chess\Chess.csproj", "{166279F3-82EA-40D2-A43A-ADB1306BBE70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess", "Chess\Chess.csproj", "{166279F3-82EA-40D2-A43A-ADB1306BBE70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoChessApp", "..\..\Users\Fly\source\repos\Chess\DemoChessApp\DemoChessApp.csproj", "{0CC708FE-CCC0-49A7-8A3F-26257503653E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoChessApp", "DemoChessApp\DemoChessApp.csproj", "{0CC708FE-CCC0-49A7-8A3F-26257503653E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
