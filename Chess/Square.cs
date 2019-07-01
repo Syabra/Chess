@@ -35,5 +35,15 @@ namespace Chess
             return x >= 0 && x < 8 &&
                    y >= 0 && y < 8;
         }
+
+        public static bool operator == (Square a, Square b)
+        {
+            return a.x == b.x && a.y == b.y;
+        }
+
+        public static bool operator !=(Square a, Square b)
+        {
+            return !(a == b);
+        }
     }
 }
