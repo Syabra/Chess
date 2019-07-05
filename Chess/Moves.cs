@@ -53,11 +53,13 @@ namespace Chess
 
                 case Figure.whiteRook:
                 case Figure.blackRook:
-                    return false; 
+                    return (fm.SignX == 0 || fm.SignY == 0) &&
+                        CanStraightMove();
 
                 case Figure.whiteBishop:
                 case Figure.blackBishop:
-                    return false;
+                    return (fm.SignX != 0 && fm.SignY != 0) &&
+                        CanStraightMove();
 
                 case Figure.whiteKnight:
                 case Figure.blackKnight:
@@ -65,10 +67,51 @@ namespace Chess
 
                 case Figure.whitePawn:
                 case Figure.blackPawn:
-                    return false;
+                    return CanPawnMove();
 
                 default: return false;
             }
+        }
+
+        bool CanPawnMove()
+        {
+            if (fm.from.y < 1 || fm.from.y > 6)
+                return false;
+            int stepY = fm.figure.GetColor() == Color.white ? 1 : -1;
+            return
+                CanPawnGo(stepY) ||
+                CanPawnJump(stepY) ||
+                CanPawnEat(stepY);
+
+        }
+
+        private bool CanPawnGo(int stepY)
+        {
+            if (board.GetFigureAt(fm.to) == Figure.none)
+                if (fm.DeltaX == 0)
+                    if (fm.DeltaY == stepY)
+                        return true;
+            return false;
+        }
+
+        private bool CanPawnJump(int stepY)
+        {
+            if (board.GetFigureAt(fm.to) == Figure.none)
+                if (fm.DeltaX == 0)
+                    if (fm.DeltaY == 2 * stepY)
+                        if (fm.from.y == 1 || fm.from.y == 6)
+                            if (board.GetFigureAt(new Square(fm.from.x, fm.from.y + stepY)) == Figure.none)
+                                 return true;
+            return false;
+        }
+
+        private bool CanPawnEat(int stepY)
+        {
+            if (board.GetFigureAt(fm.to) != Figure.none)
+                if (fm.AbsDeltaX == 1)
+                    if (fm.DeltaY == stepY)
+                        return true;
+            return false;
         }
 
         private bool CanStraightMove()
@@ -87,7 +130,7 @@ namespace Chess
 
         private bool CanKingMove()
         {
-            if (fm.AbsDeltaX <= 1 && fm.AbsDeltaX <= 1)
+            if (fm.AbsDeltaX <= 1 && fm.AbsDeltaY <= 1)
                 return true;
             return false;
         }
@@ -98,5 +141,7 @@ namespace Chess
             if (fm.AbsDeltaX == 2 && fm.AbsDeltaY == 1) return true;
             return false;
         }
+
+
     }
 }
