@@ -11,17 +11,22 @@ namespace DemoChessApp
     {
         static void Main(string[] args)
         {
-           Chess.Chess chess = new Chess.Chess();
+            Random random = new Random();
+            Chess.Chess chess = new Chess.Chess();
+            List<string> list;
             while (true)
             {
+                list = chess.GetAllMoves();
                 Console.WriteLine(chess.fen);
                 Print(ChessToAscii(chess));
-                foreach (string moves in chess.GetAllMoves())
+                Console.WriteLine(chess.IsCheck() ? "CHESK" : "");
+                foreach (string moves in list)
                     Console.Write(moves + "\t");
                 Console.WriteLine();
                 Console.Write("> ");
                 string move = Console.ReadLine();
-                if (move == "") break;
+                if (move == "q") break;
+                if (move == "") move = list[random.Next(list.Count)];
                 chess = chess.Move(move);
             }
         }
