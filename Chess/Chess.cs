@@ -13,7 +13,7 @@ namespace Chess
         Moves moves;
         List<FigureMoving> allMoves;
 
-        public Chess (string fen = "rnbqkbnr/ppp111pp/8/8/8/8/PPP111PP/RNBQKBNR w KQkq - 0 1")
+        public Chess (string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
         {
             this.fen = fen;
             board = new Board(fen);

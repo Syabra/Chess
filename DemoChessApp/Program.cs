@@ -19,7 +19,7 @@ namespace DemoChessApp
                 list = chess.GetAllMoves();
                 Console.WriteLine(chess.fen);
                 Print(ChessToAscii(chess));
-                Console.WriteLine(chess.IsCheck() ? "CHESK" : "");
+               // Console.WriteLine(chess.IsCheck() ? "CHESK" : "");
                 foreach (string moves in list)
                     Console.Write(moves + "\t");
                 Console.WriteLine();
